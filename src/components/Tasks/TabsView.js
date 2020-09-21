@@ -51,15 +51,15 @@ const TabsView = () => {
       </Tabs>
       <Content>
         <Scopes active={active === 0}>
-          {scopes.map(({ title, icon }) => (
-            <div>
+          {scopes.map(({ title, icon }, index) => (
+            <div key={index}>
               {icon} <h5>{title}</h5>
             </div>
           ))}
         </Scopes>
         <Tasks active={active === 1}>
-          {tasks.map((task) => (
-            <span>
+          {tasks.map((task, index) => (
+            <span key={index}>
               <h5>{task}</h5>
             </span>
           ))}

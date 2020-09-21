@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 131.19%;
     text-align: center;
     text-transform: uppercase;
-    color: ${({ theme: { accent } }) => accent};
+    color: #FFFFFF;
   }
 
   h3 {
@@ -63,6 +63,34 @@ const GlobalStyle = createGlobalStyle`
     line-height: 170.9%;
     text-align: center;
     color: #FFFFFF;
+  }
+
+  a {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 170.9%;
+    text-align: center;
+    color: ${({ theme: { accent } }) => accent};
+    text-decoration: none;
+  }
+
+  input, textarea {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 170.9%;
+    color: #ffffff;
+  }
+
+  ul {
+    padding-inline-start: 0;
+  }
+
+  li {
+    list-style-type: none;
   }
 `;
 

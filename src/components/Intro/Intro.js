@@ -31,7 +31,7 @@ const Intro = () => (
       </Buttons>
     </IntroTitle>
     <Sphere>
-      <video autoplay="autoplay" loop src={sphere} />
+      <video autoPlay loop muted="muted" src={sphere} />
     </Sphere>
     <Scope>
       <li>
@@ -115,11 +115,9 @@ const Scope = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-inline-start: 0;
   margin-bottom: 52px;
 
   > li {
-    list-style-type: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,6 +128,7 @@ const Scope = styled.ul`
 
     > h2 {
       margin-top: 32px;
+      color: ${({ theme: { accent } }) => accent};
     }
 
     > p {

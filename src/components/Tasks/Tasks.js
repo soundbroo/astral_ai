@@ -4,7 +4,7 @@ import styled from "styled-components";
 import AccentText from "../Common/AccentText";
 import TabsView from "./TabsView";
 
-import tasksBg from "../../images/TasksBg.svg";
+import topToBottomBg from "../../images/TopToBottomBg.svg";
 
 const Tasks = () => {
   return (
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   justify-content: center;
   padding: 0 24px;
   text-align: center;
-  background-image: url(${tasksBg});
+  background-image: url(${topToBottomBg});
   background-repeat: none;
   background-position: center;
   height: 878px;
