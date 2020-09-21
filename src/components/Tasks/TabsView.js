@@ -40,15 +40,18 @@ const TabsView = () => {
     <Wrapper>
       <Tabs>
         {tabs.map((tab, index) => (
-          <Tab
+          <h5
             key={index}
             active={index === active}
             onClick={() => setActive(index)}
           >
             {tab}
-          </Tab>
+          </h5>
         ))}
       </Tabs>
+      <Slider active={active}>
+        <div />
+      </Slider>
       <Content>
         <Scopes active={active === 0}>
           {scopes.map(({ title, icon }, index) => (
@@ -85,17 +88,28 @@ const Wrapper = styled.div`
 const Tabs = styled.nav`
   display: flex;
   align-items: center;
+  justify-content: space-around;
   flex: 1;
-  margin-bottom: 24px;
   padding: 0 24px;
 `;
 
-const Tab = styled.h5`
-  flex: 1;
-  border-bottom: 1px solid ${({ theme: { tabBorder } }) => tabBorder};
-  border-bottom-color: ${({ active, theme: { accent, tabBorder } }) =>
-    active ? accent : tabBorder};
-  padding-bottom: 12px;
+const Slider = styled.div`
+  height: 1px;
+  width: calc(100% - 32px);
+  background: ${({ theme: { tabBorder } }) => tabBorder};
+  margin: 0 0 24px 16px;
+
+  > div {
+    background: ${({ theme: { accent } }) => accent};
+    width: 50%;
+    height: 1px;
+    transition: transform 1s ease;
+    ${({ active }) =>
+      active === 1 &&
+      css`
+        transform: translateX(100%);
+      `}
+  }
 `;
 
 const Content = styled.div`

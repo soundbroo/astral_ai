@@ -9,6 +9,7 @@ import Technologies from "./components/Technologies/Technologies";
 import Products from "./components/Products/Products";
 import Partners from "./components/Partners/Partners";
 import ContactUs from "./components/ContactUs/ContactUs";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Products />
       <Partners />
       <ContactUs />
+      <Footer />
     </Wrapper>
   );
 }

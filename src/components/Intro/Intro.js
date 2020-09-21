@@ -31,7 +31,7 @@ const Intro = () => (
       </Buttons>
     </IntroTitle>
     <Sphere>
-      <video autoPlay loop muted="muted" src={sphere} />
+      <video autoPlay loop preload="auto" muted="muted" src={sphere} />
     </Sphere>
     <Scope>
       <li>
