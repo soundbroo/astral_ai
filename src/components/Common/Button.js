@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import accentButtonBg from "../../images/AccentButtonBg.svg";
 
@@ -23,6 +23,9 @@ const Wrapper = styled.button`
   cursor: pointer;
   background-image: ${({ accent }) =>
     accent ? `url(${accentButtonBg})` : "none"};
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
   > span {
     font-family: Montserrat;
     font-style: normal;
@@ -31,8 +34,29 @@ const Wrapper = styled.button`
     letter-spacing: 0.1em;
     color: #ffffff;
     text-transform: uppercase;
-  }
 
+    ${({
+      theme: {
+        viewports: { sm },
+      },
+    }) => css`
+      @media (min-width: ${sm.min}) {
+        font-size: 14px;
+        line-height: 17px;
+      }
+    `}
+  }
   width: 197px;
   height: 52px;
+
+  ${({
+    theme: {
+      viewports: { sm },
+    },
+  }) => css`
+    @media (min-width: ${sm.min}) {
+      width: 227px;
+      height: 60px;
+    }
+  `}
 `;

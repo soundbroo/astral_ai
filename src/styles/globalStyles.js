@@ -1,10 +1,14 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background: ${({ theme: { bg } }) => bg}
+    background: ${({ theme: { bg } }) => bg};
+  }
+
+  #root {
+    overflow: hidden;
   }
 
   h1 {
@@ -14,6 +18,32 @@ const GlobalStyle = createGlobalStyle`
     line-height: 34px;
     letter-spacing: 0.04em;
     color: #FFFFFF;
+
+    ${({
+      theme: {
+        viewports: { sm, md, lg, xlg },
+      },
+    }) => css`
+      @media (min-width: ${xlg.min}) {
+        font-size: 52px;
+        line-height: 63px;
+      }
+
+      @media (min-width: ${lg.min}) and (max-width: ${lg.max}) {
+        font-size: 48px;
+        line-height: 59px;
+      }
+
+      @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+        font-size: 40px;
+        line-height: 49px;
+      }
+
+      @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+        font-size: 32px;
+        line-height: 39px;
+      }
+    `}
   }
 
   h2 {
@@ -45,6 +75,20 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
     text-transform: uppercase;
     color: #FFFFFF;
+
+    ${({
+      theme: {
+        viewports: { lg, xlg },
+      },
+    }) => css`
+      @media (min-width: ${xlg.min}) {
+        letter-spacing: 0.11em;
+      }
+
+      @media (min-width: ${lg.min}) {
+        font-size: 14px;
+      }
+    `}
   }
 
   p {
@@ -53,6 +97,20 @@ const GlobalStyle = createGlobalStyle`
     font-size: 14px;
     line-height: 146.9%;
     color: #FFFFFF;
+
+    ${({
+      theme: {
+        viewports: { sm, md },
+      },
+    }) => css`
+      @media (min-width: ${md.min}) {
+        font-size: 20px;
+      }
+
+      @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+        font-size: 16px;
+      }
+    `}
   }
 
   article {
@@ -63,6 +121,20 @@ const GlobalStyle = createGlobalStyle`
     line-height: 170.9%;
     text-align: center;
     color: #FFFFFF;
+
+    ${({
+      theme: {
+        viewports: { md, lg },
+      },
+    }) => css`
+      @media (min-width: ${lg.min}) {
+        font-size: 16px;
+      }
+
+      @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+        font-size: 14px;
+      }
+    `}
   }
 
   a {

@@ -1,8 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import bottomToTopBg from "../../images/BottomToTopBg.svg";
 import technologiesTitleBg from "../../images/TechnologiesTitleBg.svg";
+import technologiesIcon from "../../images/TechnologiesIcon.svg";
+import technologiesIconLg from "../../images/TechnologiesIconLg.svg";
 
 const technologies = [
   {
@@ -54,9 +56,31 @@ const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   height: 750px;
+
   h2 {
     font-family: Montserrat;
   }
+
+  ${({
+    theme: {
+      viewports: { sm, md, lg },
+    },
+  }) => css`
+    > div,
+    > ul {
+      @media (min-width: ${lg.min}) {
+        max-width: ${lg.maxWidth};
+      }
+
+      @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+        max-width: ${md.maxWidth};
+      }
+
+      @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+        max-width: ${sm.maxWidth};
+      }
+    }
+  `};
 `;
 
 const Title = styled.div`
@@ -88,4 +112,53 @@ const List = styled.ul`
       line-height: 170.69%;
     }
   }
+
+  ${({
+    theme: {
+      viewports: { sm, md, lg },
+    },
+  }) => css`
+    @media (min-width: ${lg.min}) {
+      grid-column-gap: 426px;
+      grid-row-gap: 96px;
+      background-image: url(${technologiesIconLg});
+      background-position: 54% 55%;
+    }
+
+    @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+      grid-column-gap: 206px;
+      grid-row-gap: 110px;
+      background-image: url(${technologiesIcon});
+      background-position: 54% 50%;
+    }
+
+    @media (min-width: ${md.min}) {
+      display: grid;
+      grid-template-columns: 278px 278px;
+      grid-template-rows: 1fr 1fr;
+      background-repeat: no-repeat;
+      margin-left: -44px;
+
+      > li:not(:last-child) {
+        margin-bottom: 0;
+      }
+
+      > li > p {
+        font-size: 16px;
+      }
+
+      > li:nth-child(2n + 1) {
+        > h2,
+        > p {
+          text-align: right;
+        }
+      }
+    }
+
+    @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+      > li > p {
+        font-size: 14px;
+      }
+    }
+  `};
 `;

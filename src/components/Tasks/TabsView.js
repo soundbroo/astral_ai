@@ -79,21 +79,60 @@ const Wrapper = styled.div`
   justify-content: center;
   margin-left: -24px;
   width: calc(100% + 48px);
+  ${({
+    theme: {
+      viewports: { xsm, sm, md, lg, xlg },
+    },
+  }) => css`
+    @media (min-width: ${md.min}) {
+      margin-top: 64px;
+    }
+
+    @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+      margin-top: 48px;
+    }
+
+    @media (max-width: ${xsm.max}) {
+      margin-top: 32px;
+    }
+
+    @media (min-width: ${sm.min}) {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+  `};
 `;
 
 const Tabs = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex: 1;
+  align-self: center;
+  width: 100%;
   padding: 0 24px;
+  max-width: 637px;
+
+  h5 {
+    ${({
+      theme: {
+        viewports: { md },
+      },
+    }) => css`
+      @media (min-width: ${md.min}) {
+        font-size: 14px;
+      }
+    `};
+  }
 `;
 
 const Slider = styled.div`
   height: 1px;
   width: calc(100% - 32px);
   background: ${({ theme: { tabBorder } }) => tabBorder};
-  margin: 0 0 24px 16px;
+  margin: 0 0 24px 0;
+  max-width: 637px;
+  align-self: center;
 
   > div {
     background: ${({ theme: { accent } }) => accent};
@@ -104,14 +143,33 @@ const Slider = styled.div`
       active === 1 &&
       css`
         transform: translateX(100%);
-      `}
+      `};
   }
+
+  ${({
+    theme: {
+      viewports: { sm },
+    },
+  }) => css`
+    @media (min-width: ${sm.min}) {
+      width: 100%;
+    }
+  `};
 `;
 
 const Content = styled.div`
   overflow: hidden;
   padding: 0 24px;
-  margin-bottom: 32px;
+  margin: 0 auto 32px auto;
+  ${({
+    theme: {
+      viewports: { sm },
+    },
+  }) => css`
+    @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+      max-width: 375px;
+    }
+  `};
 `;
 
 const Scopes = styled.div`
@@ -132,6 +190,31 @@ const Scopes = styled.div`
     align-items: center;
     padding: 12px;
   }
+
+  ${({
+    theme: {
+      viewports: { sm, md, lg, xlg },
+    },
+  }) => css`
+    @media (min-width: ${lg.min}) {
+      height: 134px;
+      margin: 40px 0;
+      svg {
+        width: 92px;
+        height: 92px;
+      }
+    }
+
+    @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+      height: 120px;
+      margin: 24px 0;
+    }
+
+    @media (min-width: ${md.min}) {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+  `};
 `;
 
 const Tasks = styled.div`
@@ -152,6 +235,28 @@ const Tasks = styled.div`
       text-transform: unset;
     }
   }
+
+  ${({
+    theme: {
+      viewports: { sm, md, lg, xlg },
+    },
+  }) => css`
+    @media (min-width: ${lg.min}) {
+      height: 224px;
+      margin-top: -224px;
+    }
+
+    @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+      height: 168px;
+      margin-top: -168px;
+    }
+
+    @media (min-width: ${md.min}) {
+      > span {
+        height: 42px;
+      }
+    }
+  `};
 `;
 
 const DiscussButton = styled(Button)`

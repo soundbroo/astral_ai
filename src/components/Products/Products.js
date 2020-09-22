@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Lottie from "react-lottie";
 import celsusAnimation from "../../animations/CelsusAnimation.json";
 import astralDocsAnimation from "../../animations/AstralDocsAnimation.json";
@@ -31,29 +31,33 @@ const Products = () => (
     {products.map(
       ({ animation, animationDescription, title, articles }, index) => (
         <Product key={index}>
-          <Lottie
-            options={{
-              loop: true,
-              autoplay: true,
-              animationData: animation,
-              rendererSettings: {
-                preserveAspectRatio: "xMidYMid slice",
-              },
-            }}
-          />
-          <Description>{animationDescription}</Description>
-          <h1>{title}</h1>
-          <Articles>
-            {articles.map((article, i) => (
-              <article key={i}>{article}</article>
-            ))}
-          </Articles>
-          <MoreButton
-            accent
-            alt={`Кнопка: подробнее про "${animationDescription}"`}
-          >
-            Подробнее
-          </MoreButton>
+          <Animation>
+            <Lottie
+              options={{
+                loop: true,
+                autoplay: true,
+                animationData: animation,
+                rendererSettings: {
+                  preserveAspectRatio: "xMidYMid slice",
+                },
+              }}
+            />
+          </Animation>
+          <Content>
+            <Description>{animationDescription}</Description>
+            <h1>{title}</h1>
+            <Articles>
+              {articles.map((article, i) => (
+                <article key={i}>{article}</article>
+              ))}
+            </Articles>
+            <MoreButton
+              accent
+              alt={`Кнопка: подробнее про "${animationDescription}"`}
+            >
+              Подробнее
+            </MoreButton>
+          </Content>
         </Product>
       )
     )}
@@ -66,13 +70,82 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 24px;
-  margin-bottom: 86px;
+  margin: 48px auto;
+
+  ${({
+    theme: {
+      viewports: { sm, md, lg, xlg },
+    },
+  }) => css`
+    @media (min-width: ${xlg.min}) {
+      max-width: ${xlg.maxWidth};
+    }
+
+    @media (min-width: ${lg.min}) and (max-width: ${lg.max}) {
+      max-width: ${lg.maxWidth};
+    }
+
+    @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+      max-width: ${md.maxWidth};
+    }
+
+    @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+      max-width: ${sm.maxWidth};
+    }
+  `};
 `;
 
 const Product = styled.div`
+  display: flex;
+  flex-direction: column;
+
   &:not(:last-child) {
     margin-bottom: 58px;
   }
+
+  ${({
+    theme: {
+      viewports: { md },
+    },
+  }) => css`
+    @media (min-width: ${md.min}) {
+      padding: 86px 0;
+
+      &:not(:last-child) {
+        margin-bottom: 0;
+      }
+
+      &:nth-child(2n) {
+        flex-direction: row;
+      }
+
+      &:nth-child(2n + 1) {
+        flex-direction: row-reverse;
+      }
+    }
+  `};
+`;
+
+const Animation = styled.div`
+  max-width: 378px;
+  width: 100%;
+  align-self: center;
+  flex-shrink: 0;
+
+  ${({
+    theme: {
+      viewports: { md },
+    },
+  }) => css`
+    @media (min-width: ${md.min}) {
+      padding: 24px;
+    }
+  `};
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Articles = styled.div`

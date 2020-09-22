@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import AccentText from "../Common/AccentText";
 
@@ -30,7 +30,7 @@ const Partners = () => {
       </article>
       <Content>
         {partners.map((partner, index) => (
-          <li key={index}>{partner}</li>
+          <div key={index}>{partner}</div>
         ))}
       </Content>
     </Wrapper>
@@ -49,12 +49,65 @@ const Wrapper = styled.div`
   background-repeat: none;
   background-position: center;
   height: 820px;
+
+  > article {
+    margin-bottom: 32px !important;
+    margin-top: 30px !important;
+  }
+
+  ${({
+    theme: {
+      viewports: { sm, md, lg, xlg },
+    },
+  }) => css`
+    > h1,
+    > article,
+    > div {
+      margin: 0 auto;
+
+      @media (min-width: ${xlg.min}) {
+        max-width: ${xlg.maxWidth};
+      }
+
+      @media (min-width: ${lg.min}) and (max-width: ${lg.max}) {
+        max-width: ${lg.maxWidth};
+      }
+
+      @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+        max-width: ${`${Number(md.maxWidth.replace("px", "")) + 24}px`};
+      }
+
+      @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+        max-width: ${sm.maxWidth};
+      }
+    }
+  `};
 `;
 
-const Content = styled.ul`
-  > li {
-    height: 48px;
-    width: 100%;
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  > div {
     margin: 32px 0;
+    > svg {
+      height: 48px;
+      width: inherit;
+
+      ${({
+        theme: {
+          viewports: { sm, md, lg },
+        },
+      }) => css`
+        @media (min-width: ${lg.min}) {
+          height: 76px;
+        }
+
+        @media (min-width: ${sm.min}) and (max-width: ${md.max}) {
+          height: 60px;
+        }
+      `};
+    }
   }
 `;

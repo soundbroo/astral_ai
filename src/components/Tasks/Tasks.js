@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import AccentText from "../Common/AccentText";
 import TabsView from "./TabsView";
@@ -33,4 +33,37 @@ const Wrapper = styled.div`
   background-repeat: none;
   background-position: center;
   height: 878px;
+
+  > h1,
+  > article {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  > h1,
+  > article,
+  > div {
+    ${({
+      theme: {
+        viewports: { sm, md, lg, xlg },
+      },
+    }) => css`
+      @media (min-width: ${xlg.min}) {
+        max-width: ${xlg.maxWidth};
+      }
+
+      @media (min-width: ${lg.min}) and (max-width: ${lg.max}) {
+        max-width: ${lg.maxWidth};
+      }
+
+      @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+        max-width: ${md.maxWidth};
+      }
+
+      @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+        max-width: ${sm.maxWidth};
+      }
+    `};
+    }
+  }
 `;

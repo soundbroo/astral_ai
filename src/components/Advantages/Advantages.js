@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Lottie from "react-lottie";
 import developmentAnimation from "../../animations/DevelopmentAnimation.json";
 import qualityResultAnimation from "../../animations/QualityResultAnimation.json";
@@ -37,24 +37,28 @@ const Advantages = () => (
   <Wrapper>
     {advantages.map(({ animation, title, articles }, index) => (
       <Content key={index}>
-        <Lottie
-          options={{
-            loop: true,
-            autoplay: true,
-            animationData: animation,
-            rendererSettings: {
-              preserveAspectRatio: "xMidYMid slice",
-            },
-          }}
-          height="90%"
-          width="90%"
-        />
-        {title}
-        <Articles>
-          {articles.map((article, i) => (
-            <article key={i}>{article}</article>
-          ))}
-        </Articles>
+        <Animation>
+          <Lottie
+            options={{
+              loop: true,
+              autoplay: true,
+              animationData: animation,
+              rendererSettings: {
+                preserveAspectRatio: "xMidYMid slice",
+              },
+            }}
+            height="90%"
+            width="90%"
+          />
+        </Animation>
+        <Text>
+          {title}
+          <Articles>
+            {articles.map((article, i) => (
+              <article key={i}>{article}</article>
+            ))}
+          </Articles>
+        </Text>
       </Content>
     ))}
   </Wrapper>
@@ -67,10 +71,72 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 24px;
-  margin-bottom: 48px;
+  margin: 48px auto;
+
+  ${({
+    theme: {
+      viewports: { sm, md, lg, xlg },
+    },
+  }) => css`
+    @media (min-width: ${xlg.min}) {
+      max-width: ${xlg.maxWidth};
+    }
+
+    @media (min-width: ${lg.min}) and (max-width: ${lg.max}) {
+      max-width: ${lg.maxWidth};
+    }
+
+    @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+      max-width: ${md.maxWidth};
+    }
+
+    @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+      max-width: ${sm.maxWidth};
+    }
+  `};
 `;
 
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ${({
+    theme: {
+      viewports: { md },
+    },
+  }) => css`
+    @media (min-width: ${md.min}) {
+      padding: 86px 0;
+      &:nth-child(2n) {
+        flex-direction: row;
+      }
+
+      &:nth-child(2n + 1) {
+        flex-direction: row-reverse;
+      }
+    }
+  `};
+`;
+
+const Animation = styled.div`
+  max-width: 378px;
+  width: 100%;
+  align-self: center;
+  margin: 48px 0;
+  flex-shrink: 0;
+
+  ${({
+    theme: {
+      viewports: { md },
+    },
+  }) => css`
+    @media (min-width: ${md.min}) {
+      padding: 24px;
+    }
+  `};
+`;
+
+const Text = styled.div`
   display: flex;
   flex-direction: column;
 `;
