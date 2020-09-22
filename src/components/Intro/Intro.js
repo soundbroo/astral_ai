@@ -33,7 +33,7 @@ const Intro = () => (
       </Buttons>
     </IntroTitle>
     <Sphere>
-      <video autoPlay loop preload="auto" muted>
+      <video autoPlay loop playsInline preload="auto" muted>
         <source type="video/webm" src={sphereWebm} />
         <source type="video/mp4" src={sphereMp4} />
         <img src={sphereSvg} alt="Изображение: сфера" />
