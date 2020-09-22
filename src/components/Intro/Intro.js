@@ -12,6 +12,18 @@ import sphereSvg from "../../images/Sphere.svg";
 import sphereWebm from "../../images/Sphere.webm";
 import sphereMp4 from "../../images/Sphere.mp4";
 
+const AutoplayVideo = () => (
+  <Sphere
+    dangerouslySetInnerHTML={{
+      __html: `<video muted autoPlay loop playsInline>
+    <source type="video/webm" src=${sphereWebm} />
+    <source type="video/mp4" src=${sphereMp4} />
+    <img src=${sphereSvg} alt="Изображение: сфера" />
+  </video>`,
+    }}
+  ></Sphere>
+);
+
 const Intro = () => (
   <Wrapper>
     <IntroTitle>
@@ -32,13 +44,7 @@ const Intro = () => (
         <Button alt="Кнопка: сотрудничество">Сотрудничество</Button>
       </Buttons>
     </IntroTitle>
-    <Sphere>
-      <video autoPlay loop playsInline preload="auto" muted>
-        <source type="video/webm" src={sphereWebm} />
-        <source type="video/mp4" src={sphereMp4} />
-        <img src={sphereSvg} alt="Изображение: сфера" />
-      </video>
-    </Sphere>
+    <AutoplayVideo />
     <Scope>
       <li>
         <img src={cvIcon} alt="Иконка: сфера компьютерного зрения" />
