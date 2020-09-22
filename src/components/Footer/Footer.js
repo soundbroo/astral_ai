@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import astralLogo from "../../images/AstralLogo.svg";
 import bottomToTopBg from "../../images/BottomToTopBg.svg";
@@ -52,12 +52,41 @@ const Wrapper = styled.footer`
   background-repeat: none;
   background-position: center top;
   height: 695px;
+
+  ${({
+    theme: {
+      viewports: { sm, md, lg, xlg },
+    },
+  }) => css`
+    @media (min-width: ${sm.min}) {
+      height: 412px;
+    }
+
+    > div {
+      @media (min-width: ${xlg.min}) {
+        max-width: ${xlg.maxWidth};
+      }
+
+      @media (min-width: ${lg.min}) and (max-width: ${lg.max}) {
+        max-width: ${lg.maxWidth};
+      }
+
+      @media (min-width: ${md.min}) and (max-width: ${md.max}) {
+        max-width: ${md.maxWidth};
+      }
+
+      @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+        max-width: ${sm.maxWidth};
+      }
+    }
+  `};
 `;
 
 const Top = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 132px;
+  margin: 132px auto 0 auto;
+  width: 100%;
 
   > img {
     margin: 0 0 24px -40px;
@@ -66,6 +95,28 @@ const Top = styled.div`
   a {
     color: #ffffff;
   }
+
+  ${({
+    theme: {
+      viewports: { sm, md },
+    },
+  }) => css`
+    @media (min-width: ${md.min}) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+      margin: 106px auto 0 auto;
+    }
+
+    > img {
+      @media (min-width: ${sm.min}) {
+        margin: 0 0 24px 0;
+        align-self: flex-start;
+      }
+    }
+  `};
 `;
 
 const Menu = styled.ul`
@@ -93,6 +144,30 @@ const Menu = styled.ul`
       }
     }
   }
+
+  ${({
+    theme: {
+      viewports: { sm, md, lg },
+    },
+  }) => css`
+    @media (min-width: ${lg.min}) {
+      max-width: 560px;
+    }
+
+    @media (min-width: ${md.min}) {
+      max-width: 460px;
+      width: 100%;
+    }
+
+    @media (min-width: ${sm.min}) {
+      flex-direction: row;
+      justify-content: space-between;
+
+      > li > h5 {
+        margin-bottom: 40px;
+      }
+    }
+  `};
 `;
 
 const Bottom = styled.div`
@@ -102,6 +177,7 @@ const Bottom = styled.div`
   width: 100%;
   padding: 28px 0;
   border-top: 1px solid #c4c4c433;
+  margin: 0 auto;
 
   h3,
   a {
@@ -109,4 +185,14 @@ const Bottom = styled.div`
     font-size: 14px;
     line-height: 170.9%;
   }
+
+  ${({
+    theme: {
+      viewports: { sm },
+    },
+  }) => css`
+    @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+      padding: 12px 0;
+    }
+  `};
 `;
