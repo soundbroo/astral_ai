@@ -40,11 +40,7 @@ const TabsView = () => {
     <Wrapper>
       <Tabs>
         {tabs.map((tab, index) => (
-          <h5
-            key={index}
-            active={index === active}
-            onClick={() => setActive(index)}
-          >
+          <h5 key={index} onClick={() => setActive(index)}>
             {tab}
           </h5>
         ))}

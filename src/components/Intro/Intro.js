@@ -8,7 +8,9 @@ import playIcon from "../../images/PlayIcon.svg";
 import cvIcon from "../../images/CVIcon.svg";
 import nlpIcon from "../../images/NLPIcon.svg";
 import mlIcon from "../../images/MLIcon.svg";
-import sphere from "../../images/Sphere.webm";
+import sphereSvg from "../../images/Sphere.svg";
+import sphereWebm from "../../images/Sphere.webm";
+import sphereMp4 from "../../images/Sphere.mp4";
 
 const Intro = () => (
   <Wrapper>
@@ -31,7 +33,11 @@ const Intro = () => (
       </Buttons>
     </IntroTitle>
     <Sphere>
-      <video autoPlay loop preload="auto" muted="muted" src={sphere} />
+      <video autoPlay loop preload="auto" muted>
+        <source type="video/webm" src={sphereWebm} />
+        <source type="video/mp4" src={sphereMp4} />
+        <img src={sphereSvg} alt="Изображение: сфера" />
+      </video>
     </Sphere>
     <Scope>
       <li>
