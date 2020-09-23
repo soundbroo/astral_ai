@@ -164,6 +164,20 @@ const GlobalStyle = createGlobalStyle`
   li {
     list-style-type: none;
   }
+
+  * {
+    ::-webkit-scrollbar {
+      width: 6px;
+      background: #10183C;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      width: 6px;
+      background: ${({ theme: { accent } }) => accent};
+    }
+    scrollbar-width: thin;
+    scrollbar-color: ${({ theme: { accent } }) => `${accent} #10183C`};
+  }
 `;
 
 export default GlobalStyle;
