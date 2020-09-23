@@ -1,6 +1,10 @@
 import { createGlobalStyle, css } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -134,7 +138,7 @@ const GlobalStyle = createGlobalStyle`
       @media (min-width: ${md.min}) and (max-width: ${md.max}) {
         font-size: 14px;
       }
-    `}
+    `};
   }
 
   a {

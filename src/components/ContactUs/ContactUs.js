@@ -6,7 +6,7 @@ import Button from "../Common/Button";
 
 const ContactUs = () => {
   return (
-    <Wrapper>
+    <Wrapper id="contact">
       <Text>
         <h1>
           <AccentText>Напишите</AccentText> Нам

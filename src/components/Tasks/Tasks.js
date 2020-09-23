@@ -8,7 +8,7 @@ import topToBottomBg from "../../images/TopToBottomBg.svg";
 
 const Tasks = () => {
   return (
-    <Wrapper>
+    <Wrapper id="tasks">
       <h1>
         <AccentText>Сферы</AccentText> и Задачи для ИИ
       </h1>

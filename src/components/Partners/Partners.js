@@ -18,24 +18,22 @@ const partners = [
   <Sber />,
 ];
 
-const Partners = () => {
-  return (
-    <Wrapper>
-      <h1>
-        Наши <AccentText>Партнеры</AccentText>
-      </h1>
-      <article>
-        Мы сотрудничаем с самыми предовыми компаниями на рынке, станьте одной из
-        них!
-      </article>
-      <Content>
-        {partners.map((partner, index) => (
-          <div key={index}>{partner}</div>
-        ))}
-      </Content>
-    </Wrapper>
-  );
-};
+const Partners = () => (
+  <Wrapper id="partners">
+    <h1>
+      Наши <AccentText>Партнеры</AccentText>
+    </h1>
+    <article>
+      Мы сотрудничаем с самыми предовыми компаниями на рынке, станьте одной из
+      них!
+    </article>
+    <Content>
+      {partners.map((partner, index) => (
+        <div key={index}>{partner}</div>
+      ))}
+    </Content>
+  </Wrapper>
+);
 
 export default Partners;
 

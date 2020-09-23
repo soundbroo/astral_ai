@@ -34,7 +34,7 @@ const advantages = [
 ];
 
 const Advantages = () => (
-  <Wrapper>
+  <Wrapper id="advantages">
     {advantages.map(({ animation, title, articles }, index) => (
       <Content key={index}>
         <Animation>

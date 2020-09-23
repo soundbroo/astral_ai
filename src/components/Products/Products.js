@@ -27,7 +27,7 @@ const products = [
 ];
 
 const Products = () => (
-  <Wrapper>
+  <Wrapper id="products">
     {products.map(
       ({ animation, animationDescription, title, articles }, index) => (
         <Product key={index}>
