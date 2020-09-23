@@ -51,11 +51,13 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 0 24px;
   background-image: url(${bottomToTopBg});
   background-repeat: no-repeat;
   background-position: center;
-  height: 750px;
+  background-size: cover;
+  height: 820px;
 
   h2 {
     font-family: Montserrat;
@@ -63,9 +65,12 @@ const Wrapper = styled.div`
 
   ${({
     theme: {
-      viewports: { sm, md, lg },
+      viewports: { sm, md, lg, xxlg },
     },
   }) => css`
+    @media (min-width: ${xxlg.min}) {
+      height: 1076px;
+    }
     > div,
     > ul {
       @media (min-width: ${lg.min}) {
@@ -87,7 +92,6 @@ const Title = styled.div`
   background-image: url(${technologiesTitleBg});
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: 120px;
   margin-bottom: 32px;
   width: 208px;
   height: 50px;

@@ -110,6 +110,7 @@ const Product = styled.div`
   }) => css`
     @media (min-width: ${md.min}) {
       padding: 86px 0;
+      justify-content: space-between;
 
       &:not(:last-child) {
         margin-bottom: 0;
@@ -134,9 +135,13 @@ const Animation = styled.div`
 
   ${({
     theme: {
-      viewports: { md },
+      viewports: { md, lg },
     },
   }) => css`
+    @media (min-width: ${lg.min}) {
+      transform: scale(1.5);
+    }
+
     @media (min-width: ${md.min}) {
       padding: 24px;
     }
@@ -146,6 +151,7 @@ const Animation = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 490px;
 `;
 
 const Articles = styled.div`

@@ -114,6 +114,12 @@ const Tabs = styled.nav`
   max-width: 637px;
 
   h5 {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    cursor: pointer;
     ${({
       theme: {
         viewports: { md },

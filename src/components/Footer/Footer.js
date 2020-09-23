@@ -49,7 +49,7 @@ const Wrapper = styled.footer`
   align-items: flex-start;
   padding: 0 24px;
   background-image: url(${bottomToTopBg});
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: center top;
   height: 695px;
 
@@ -58,6 +58,10 @@ const Wrapper = styled.footer`
       viewports: { sm, md, lg, xlg },
     },
   }) => css`
+    @media (min-width: ${xlg.min}) {
+      background-size: cover;
+    }
+
     @media (min-width: ${sm.min}) {
       height: 412px;
     }
@@ -89,7 +93,8 @@ const Top = styled.div`
   width: 100%;
 
   > img {
-    margin: 0 0 24px -40px;
+    margin: 0 0 24px 0;
+    align-self: flex-start;
   }
 
   a {
@@ -184,6 +189,7 @@ const Bottom = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 170.9%;
+    color: #ffffff;
   }
 
   ${({

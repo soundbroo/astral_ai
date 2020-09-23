@@ -46,9 +46,10 @@ const Wrapper = styled.div`
   padding: 0 24px;
   text-align: center;
   background-image: url(${topToBottomBg});
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: center;
-  height: 820px;
+  background-size: cover;
+  height: 906px;
 
   > article {
     margin-bottom: 32px !important;
@@ -57,9 +58,13 @@ const Wrapper = styled.div`
 
   ${({
     theme: {
-      viewports: { sm, md, lg, xlg },
+      viewports: { sm, md, lg, xlg, xxlg },
     },
   }) => css`
+    @media (min-width: ${xxlg.min}) {
+      height: 1194px;
+    }
+
     > h1,
     > article,
     > div {
@@ -91,6 +96,16 @@ const Content = styled.div`
   flex-wrap: wrap;
   > div {
     margin: 32px 0;
+
+    ${({
+      theme: {
+        viewports: { sm },
+      },
+    }) => css`
+      @media (min-width: ${sm.min}) and (max-width: ${sm.max}) {
+        margin: 21px 0;
+      }
+    `};
     > svg {
       height: 48px;
       width: inherit;

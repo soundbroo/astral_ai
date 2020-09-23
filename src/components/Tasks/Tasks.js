@@ -30,9 +30,20 @@ const Wrapper = styled.div`
   padding: 0 24px;
   text-align: center;
   background-image: url(${topToBottomBg});
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: center;
   height: 878px;
+
+  ${({
+    theme: {
+      viewports: { xxlg },
+    },
+  }) => css`
+    @media (min-width: ${xxlg.min}) {
+      background-size: cover;
+      height: 1186px;
+    }
+  `};
 
   > h1,
   > article {

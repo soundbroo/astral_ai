@@ -99,6 +99,7 @@ const Wrapper = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   ${({
     theme: {
@@ -107,6 +108,7 @@ const Content = styled.div`
   }) => css`
     @media (min-width: ${md.min}) {
       padding: 86px 0;
+      justify-content: space-between;
       &:nth-child(2n) {
         flex-direction: row;
       }
@@ -127,9 +129,13 @@ const Animation = styled.div`
 
   ${({
     theme: {
-      viewports: { md },
+      viewports: { md, lg },
     },
   }) => css`
+    @media (min-width: ${lg.min}) {
+      transform: scale(1.3);
+    }
+
     @media (min-width: ${md.min}) {
       padding: 24px;
     }
@@ -139,6 +145,7 @@ const Animation = styled.div`
 const Text = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 490px;
 `;
 
 const Articles = styled.div`

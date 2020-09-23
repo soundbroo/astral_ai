@@ -23,6 +23,11 @@ const theme = {
     },
     xlg: {
       min: "1201px",
+      max: "1920px",
+      maxWidth: "1140px",
+    },
+    xxlg: {
+      min: "1921px",
       maxWidth: "1140px",
     },
   },

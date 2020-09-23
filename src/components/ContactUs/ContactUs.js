@@ -116,6 +116,7 @@ const Form = styled.form`
     margin-bottom: 30px;
     box-sizing: border-box;
     outline: none;
+    resize: none;
     &::placeholder {
       color: #ffffff4d;
     }
@@ -124,6 +125,7 @@ const Form = styled.form`
   > textarea {
     padding: 12px 20px;
     height: 150px;
+    width: 100%;
   }
 
   > button {
