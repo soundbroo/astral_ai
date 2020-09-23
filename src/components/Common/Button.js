@@ -3,9 +3,9 @@ import styled, { css } from "styled-components";
 
 import accentButtonBg from "../../images/AccentButtonBg.svg";
 
-const Button = ({ icon, alt, accent, className, children }) => (
+const Button = ({ icon, alt, accent, className, children, onImgClick }) => (
   <Wrapper accent={accent} className={className} type="button">
-    {icon ? <img src={icon} alt={alt || null} /> : null}
+    {icon ? <img onClick={onImgClick} src={icon} alt={alt || null} /> : null}
     {children ? <span>{children}</span> : null}
   </Wrapper>
 );
@@ -13,6 +13,7 @@ const Button = ({ icon, alt, accent, className, children }) => (
 export default Button;
 
 const Wrapper = styled.button`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -26,6 +27,33 @@ const Wrapper = styled.button`
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+  overflow: hidden;
+
+  ${({ accent }) =>
+    accent &&
+    css`
+      &:before {
+        content: "";
+        background: rgb(255 255 255 / 0.3);
+        position: absolute;
+        top: 6px;
+        left: 40%;
+        width: 0;
+        height: 80%;
+        border-radius: 5px 20px;
+        filter: blur(16px);
+        transform: translateY(-50%);
+        transition: all 0.1s ease-in;
+      }
+
+      &:hover {
+        &:before {
+          width: 100px;
+          transform: translateY(0);
+        }
+      }
+    `};
+
   > span {
     font-family: Montserrat;
     font-style: normal;

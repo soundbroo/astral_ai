@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 32px;
         line-height: 39px;
       }
-    `}
+    `};
   }
 
   h2 {
