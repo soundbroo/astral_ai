@@ -204,8 +204,8 @@ const Sphere = styled.div`
       background-size: 1000px;
       margin: 0 0 0 -100px;
       > video {
-        width: 600px;
-        height: 600px;
+        width: 450px;
+        height: 450px;
       }
     }
 

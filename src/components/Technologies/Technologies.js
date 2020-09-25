@@ -61,6 +61,7 @@ const Wrapper = styled.div`
 
   h2 {
     font-family: Montserrat;
+    line-height: 24px !important;
   }
 
   ${({
